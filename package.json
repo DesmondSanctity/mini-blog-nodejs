@@ -1,0 +1,9 @@
+{
+  "name": "mini-blog-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js Blog for Article",
+  "main": "frontend/src/index.js",
+  "repository": "https://github.com/DesmondSanctity/mini-blog-nodejs.git",
+  "author": "Desmond Obisi",
+  "license": "MIT"
+}
