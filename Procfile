@@ -1,0 +1,1 @@
+web: nodemon --exec babel-node backend/src/server.js

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
 
 import { ROUTE_ARTICLE_PREFIX, ROUTE_ARTICLE_CREATE } from '../../constants';
 import { listArticles } from '../../services/articles';
@@ -18,40 +18,40 @@ function ArticleList() {
     }, []);
 
     const renderArticles = () => articles.map((article) => {
-        const { id, title, author } = article;
-        
+        const { id, title, author, regions, content } = article;
+        console.log({ article })
+
 
         return (
-            <tr key={ id }>
-                <td>
-                    <Link to={ `${ROUTE_ARTICLE_PREFIX}/${id}` }>{ title }</Link>
-                </td>
+            <div>
+                <Card className="text-center" border="primary" style={{ width: '100rem' }} key={id}>
 
-                {author != null &&
-                <td>
-                    <h6>{ author.firstname +' '+ author.lastname }</h6>
-                </td>}
-            </tr>
+                    {author != null &&
+                        <Card.Header>
+                            <p>Author:  {author.firstname + ' ' + author.lastname}</p>
+                        </Card.Header>}
+                    <Card.Body>
+                        <Card.Title>
+                            <Link to={`${ROUTE_ARTICLE_PREFIX}/${id}`}>{title}</Link>
+                        </Card.Title>
+                        <Card.Text>
+                            {content}<br /><br />
+                            <p>Region(s):  {regions.map(({ id, name }) => name).join(",")}</p>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+                <br />
+            </div>
         );
     });
 
     return (
         <div className="ArticleList">
             <h1>Articles</h1>
-            <Link className="d-block mb-3" to={ ROUTE_ARTICLE_CREATE }>
+            <Link className="d-block mb-3" to={ROUTE_ARTICLE_CREATE}>
                 Create a new Article
             </Link>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { renderArticles() }
-                </tbody>
-            </Table>
+            {renderArticles()}
         </div>
     );
 }

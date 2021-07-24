@@ -52,6 +52,7 @@ function ArticleEdit(props) {
                     <AuthorDropDown
                         onChange={ (author) => setAuthorId(author.id) }
                         authorId = {authorId}
+                        placeholder = "No Author"
                     />
                 </Form.Group>
                 <Form.Group>
