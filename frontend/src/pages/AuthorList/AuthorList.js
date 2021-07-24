@@ -7,7 +7,6 @@ import { listAuthors } from '../../services/authors';
 
 function AuthorList() {
     const [authors, setAuthors] = useState([]);
-    console.log(authors)
 
     useEffect(() => {
         const fetchAuthors = async () => {

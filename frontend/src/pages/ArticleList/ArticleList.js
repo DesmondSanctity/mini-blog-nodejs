@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
-import { ROUTE_ARTICLE_PREFIX, ROUTE_ARTICLE_CREATE, ROUTE_AUTHOR_CREATE } from '../../constants';
+import { ROUTE_ARTICLE_PREFIX, ROUTE_ARTICLE_CREATE } from '../../constants';
 import { listArticles } from '../../services/articles';
 
 function ArticleList() {
@@ -19,8 +19,6 @@ function ArticleList() {
 
     const renderArticles = () => articles.map((article) => {
         const { id, title, author } = article;
-        console.log(article)
-        console.log({author})
         
 
         return (

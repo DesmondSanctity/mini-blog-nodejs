@@ -26,7 +26,6 @@ export default {
             const article = await Article.create(req.body);
 
             if (req.body.regions) {
-                //await article.setAuthors(req.body.author.map(({ id }) => id));
                 await article.setRegions(req.body.regions.map(({ id }) => id));
                 await article.reload({ include: ['author', 'regions'] });
             }
@@ -42,7 +41,6 @@ export default {
             const article = await Article.findByPk(req.params.articleId, { include: ['author', 'regions'] });
 
             if (req.body.regions) {
-                //await article.setAuthors(req.body.author.map(({ id }) => id));
                 await article.setRegions(req.body.regions.map(({ id }) => id));
                 await article.reload({ include: ['author', 'regions'] });
             }

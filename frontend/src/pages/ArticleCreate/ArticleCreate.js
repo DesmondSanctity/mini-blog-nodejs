@@ -14,7 +14,7 @@ function ArticleCreate() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [authorId, setAuthorId] = useState([]);
+    const [authorId, setAuthorId] = useState(null);
 
     const handleSave = async () => {
         const payload = { title, content, regions, authorId };
@@ -40,6 +40,7 @@ function ArticleCreate() {
                     <Form.Label>Author</Form.Label>
                     <AuthorDropDown
                         onChange={ (author) => setAuthorId(author.id) }
+                        authorId = {authorId}
                     />
                 </Form.Group>
                 <Form.Group>

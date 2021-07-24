@@ -14,7 +14,7 @@ function ArticleEdit(props) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [authorId, setAuthorId] = useState([]);
+    const [authorId, setAuthorId] = useState(null);
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -51,6 +51,7 @@ function ArticleEdit(props) {
                     <Form.Label>Author</Form.Label>
                     <AuthorDropDown
                         onChange={ (author) => setAuthorId(author.id) }
+                        authorId = {authorId}
                     />
                 </Form.Group>
                 <Form.Group>
